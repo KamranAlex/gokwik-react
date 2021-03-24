@@ -4,36 +4,49 @@ import './Main.css';
 const Main = () => {
   const [details, setDetails] = useState({
     isFormValid: false,
-    number: 0,
-    err: ''
+    number: null,
+    err: '',
+    isFormSubmited: false
   });
-  const handleBlur = (e) => {
+  const handleChange = (e) => {
     console.log(e.target.value);
 
     if (e.target.value.length < 1) {
       setDetails({
         isFormValid: false,
-        number: 0,
-        err: 'Mobile Number Cannot Be empty'
+        number: null,
+        err: 'Mobile Number Cannot Be empty',
+        isFormSubmited: false
       });
     } else if (/^[6-9]\d{9}$/.test(e.target.value)) {
       setDetails({
         isFormValid: true,
         number: e.target.value,
-        err: ''
+        err: '',
+        isFormSubmited: false
       });
     } else {
       setDetails({
         isFormValid: false,
-        number: 0,
-        err: 'The Mobile Number is Invalid !!! Please enter a valid Number..'
+        number: null,
+        err: 'The Number is invalid !!! Enter a valid number..',
+        isFormSubmited: false
       });
     }
   };
 
   const handleFormSubmit = (e) => {
+    console.log(details.number);
+    setDetails({
+      isFormValid: false,
+      number: null,
+      err: '',
+      isFormSubmited: true
+    });
+    e.target.reset();
     e.preventDefault();
   };
+  console.log(details.isFormSubmited);
   return (
     <div className='text-center main-div'>
       <div className='info-text text-center w-auto'>
@@ -48,7 +61,7 @@ const Main = () => {
           <input
             type='number'
             placeholder='Enter Mobile Number Here'
-            onBlur={handleBlur}
+            onChange={handleChange}
           />
           <small className='d-block text-danger'>{details.err}</small>
 
