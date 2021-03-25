@@ -9,13 +9,13 @@ const Header = () => {
     <div className='header-div'>
       <img src={logo} alt='' className='logo-main' />
 
-      <div className='container my-5'>
-        <div className='row'>
-          <div className='col-md-6 congrat-col px-4'>
+      <div className='my-5'>
+        <div className='row d-flex justify-content-center mx-0'>
+          <div className='congrat-col px-4'>
             <p className='congrat-text'>Congratulations</p>
             <img src={emoji} alt='' />
           </div>
-          <div className='col-md-6 card-col'>
+          <div className='card-col'>
             <div className='gift-card my-auto'>
               <div>
                 <img src={paytm} alt='' />
@@ -29,9 +29,19 @@ const Header = () => {
                   200
                 </p>
               </div>
+              <img
+                src={art}
+                alt=''
+                className='top-right'
+                style={{ height: '80px' }}
+              />
+              <img
+                src={art}
+                alt=''
+                className='bottom-left'
+                style={{ height: '80px' }}
+              />
             </div>
-            <img src={art} alt='' className='top-right' />
-            <img src={art} alt='' className='bottom-left' />
           </div>
         </div>
       </div>
