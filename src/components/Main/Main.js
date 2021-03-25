@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Main.css';
+import PopUp from './PopUp';
+import Suggestions from './Suggestions';
 
 const Main = () => {
   const [details, setDetails] = useState({
@@ -8,6 +10,16 @@ const Main = () => {
     err: '',
     isFormSubmited: false
   });
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   const handleChange = (e) => {
     console.log(e.target.value);
 
@@ -48,41 +60,45 @@ const Main = () => {
   };
   console.log(details.isFormSubmited);
   return (
-    <div className='text-center main-div'>
-      <div className='info-text text-center w-auto'>
-        <p>
-          You have WON Paytm Gift Card of Rs 200 for
-          <span> placing the order on Man Matters</span>
-        </p>
-      </div>
+    <div className='main-div'>
+      {/* <div className='text-center'>
+        <div className='info-text text-center w-auto'>
+          <p>
+            You have WON Paytm Gift Card of Rs 200 for
+            <span> placing the order on Man Matters</span>
+          </p>
+        </div>
 
-      <div className='form-div my-4'>
-        <form action='' onSubmit={handleFormSubmit}>
-          <input
-            type='number'
-            placeholder='Enter Mobile Number Here'
-            onChange={handleChange}
-          />
-          <small className='d-block text-danger'>{details.err}</small>
+        <div className='form-div my-4'>
+          <form action='' onSubmit={handleFormSubmit}>
+            <input
+              type='number'
+              placeholder='Enter Mobile Number Here'
+              onChange={handleChange}
+            />
+            <small className='d-block text-danger'>{details.err}</small>
 
-          {details.isFormValid === true ? (
-            <button
-              type='submit'
-              className='btn-primary btn-enabled  d-block my-4'
-            >
-              Wow! Get my Paytm Gift Card &gt;
-            </button>
-          ) : (
-            <button
-              type='submit'
-              className='btn-secondary btn-disabled d-block my-4'
-              disabled
-            >
-              Wow! Get my Paytm Gift Card &gt;
-            </button>
-          )}
-        </form>
-      </div>
+            {details.isFormValid === true ? (
+              <button
+                type='submit'
+                className='btn-primary btn-enabled  d-block my-4'
+              >
+                Wow! Get my Paytm Gift Card &gt;
+              </button>
+            ) : (
+              <button
+                type='submit'
+                className='btn-secondary btn-disabled d-block my-4'
+                disabled
+              >
+                Wow! Get my Paytm Gift Card &gt;
+              </button>
+            )}
+          </form>
+        </div>
+        <PopUp modalIsOpen={modalIsOpen} closeModal={closeModal}></PopUp>
+      </div> */}
+      <Suggestions></Suggestions>
     </div>
   );
 };

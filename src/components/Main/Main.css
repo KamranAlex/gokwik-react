@@ -52,3 +52,9 @@ form .btn-disabled {
   box-shadow: 0 0 8px 6px lightgrey;
   cursor: not-allowed;
 }
+
+/* Suggestions Styles */
+.suggest-div {
+  width: 400px;
+  margin: 0 auto;
+}
