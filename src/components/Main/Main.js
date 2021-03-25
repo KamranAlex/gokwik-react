@@ -22,9 +22,8 @@ const Main = () => {
     setIsOpen(false);
   }
 
+  // Check & validate Mobile Number
   const handleChange = (e) => {
-    console.log(e.target.value);
-
     if (e.target.value.length < 1) {
       setDetails({
         isFormValid: false,
@@ -63,8 +62,10 @@ const Main = () => {
     }
   };
 
+  // handle form submittion
   const handleFormSubmit = (e) => {
     localStorage.setItem('newNumber', details.number);
+    openModal();
     setDetails({
       isFormValid: false,
       number: null,
@@ -72,11 +73,10 @@ const Main = () => {
       isFormSubmited: true,
       numberExists: false
     });
-    openModal();
     e.target.reset();
     e.preventDefault();
   };
-  console.log(details.isFormSubmited);
+
   return (
     <div className='main-div'>
       <PopUp

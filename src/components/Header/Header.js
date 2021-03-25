@@ -16,7 +16,6 @@ const Header = () => {
             <img src={emoji} alt='' />
           </div>
           <div className='col-md-6 card-col'>
-            <img src={art} alt='' className='top-right' />
             <div className='gift-card my-auto'>
               <div>
                 <img src={paytm} alt='' />
@@ -31,6 +30,7 @@ const Header = () => {
                 </p>
               </div>
             </div>
+            <img src={art} alt='' className='top-right' />
             <img src={art} alt='' className='bottom-left' />
           </div>
         </div>
