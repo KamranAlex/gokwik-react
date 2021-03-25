@@ -1,6 +1,8 @@
 import React from 'react';
 import Modal from 'react-modal';
 import './Main.css';
+import error from '../../img/error.png';
+import success from '../../img/success.png';
 
 const customStyles = {
   content: {
@@ -23,21 +25,45 @@ const butonStyle = {
   background: 'crimson',
   fontWeight: '600'
 };
+
+const msgDiv = {
+  margin: '10px 20px'
+};
 Modal.setAppElement('#root');
-const PopUp = ({ modalIsOpen, closeModal }) => {
+const PopUp = ({ modalIsOpen, closeModal, numberExists }) => {
   return (
     <div className='pop-modal'>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel='Example Modal'
-      >
-        <button style={butonStyle} onClick={closeModal}>
-          X
-        </button>
-        <h2>Done</h2>
-      </Modal>
+      {numberExists ? (
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel='Example Modal'
+        >
+          <button style={butonStyle} onClick={closeModal}>
+            X
+          </button>
+          <div style={msgDiv}>
+            <h2>The Number Exists already</h2>
+            <img src={error} alt='' style={{ height: '30px' }} />
+          </div>
+        </Modal>
+      ) : (
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel='Example Modal'
+        >
+          <button style={butonStyle} onClick={closeModal}>
+            X
+          </button>
+          <div style={msgDiv}>
+            <h2>The Number Added</h2>
+            <img src={success} alt='' style={{ height: '30px' }} />
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };
